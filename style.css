@@ -1,5 +1,5 @@
 body{
-	background:url(../image/bodybg.jpg);
+	background:url(../bodybg.jpg);
 	color:#fff;
 	margin:0px;
 	padding:0px;
@@ -34,7 +34,7 @@ body{
 	left:0px;
 	width:36px;
 	height:36px;
-	background-image:url('../image/bg_image_3.png');
+	background-image:url('../bg_image_3.png');
 }
 #next{
 	cursor:pointer;

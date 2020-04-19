@@ -1,0 +1,24 @@
+/*dhdatagrid 大块样式*/
+#dhdatagrid {position:relative;background:white;margin:0px;padding:0px;overflow:hidden;border:1px inset;-moz-user-select:none;}
+/*dhdatagrid 表格全局样式 Download by http://www.jb51.net  */
+#dhdatagrid table {table-layout:fixed;margin:0px;}
+#dhdatagrid table td {height:18px;cursor:default;font-size:12px;font-family:verdana;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;word-break:keep-all;text-indent:2px;/*border-right:1px solid buttonface;border-bottom:1px solid buttonface;*/}
+#dhdatagrid table td .arrow {font-size:8px;color:#808080;}
+#dhdatagrid table .lastdata {border-right:none;}
+#dhdatagrid table .column {cursor:default;background:#EBEADB url(bg_btn.gif) right center no-repeat;border-top:1px solid #fff;border-right:1px solid #EBEADB;border-bottom:1px solid #DFDECC;border-left:1px solid #EBEADB;}
+#dhdatagrid table .over {cursor:default;background:#FFFFFF url(bg_btn_over.gif) left bottom repeat-x;border-top:1px solid #fff;border-right:1px solid #EBEADB;border-bottom:1px solid #DFDECC;border-left:1px solid #EBEADB;}
+#dhdatagrid table .sortdown {cursor:default;background:#DEDFD8;border:1px solid #A5A597;position:relative;left:1px;}
+#dhdatagrid table .dataover {background:#FDF5E6;}
+#dhdatagrid table .firstcolumn {width:30px;text-indent:0px;text-align:center;background:buttonface;border-top:1px solid #fff;border-right:1px solid #404040;border-bottom:1px solid #404040;border-left:1px solid #fff;}
+#dhdatagrid table .lastcolumn {background:#EBEADB;border-top:1px solid #fff;/*border-right:1px solid #404040;*/border-bottom:1px solid #DFDECC;/*border-left:1px solid #fff;*/}
+/*dhdatagrid 选定行样式*/
+#dhdatagrid table .selectedrow {background:#000080;color:white;}
+/*dhdatagrid 表头样式*/
+#dhdatagrid #titlecolumn {width:100%;position:absolute;top:0px;left:0px;z-index:3;}
+/*dhdatagrid 左边栏样式*/
+#dhdatagrid #slidecolumn {width:30px;position:absolute;top:0px;left:0px;z-index:2;}
+#dhdatagrid #slidecolumn td {width:30px;text-indent:0px;text-align:center;background:#EBEADB;border-top:1px solid #fff;border-right:1px solid #404040;border-bottom:1px solid #DFDECC;border-left:1px solid #fff;}
+/*dhdatagrid 内容表体样式*/
+#dhdatagrid #datacolumn {width:100%;position:absolute;top:0px;left:0px;}
+/*dhdatagrid 原点样式*/
+#dhdatagrid #zero {width:30px;height:18px;margin:0px;padding:0px;position:absolute;top:0px;left:0px;z-index:10;background:#EBEADB;border-top:1px solid #fff;border-right:1px solid #404040;border-bottom:1px solid #DFDECC;border-left:1px solid #fff;text-align:center;font-size:10px;color:#A19F92;}

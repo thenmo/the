@@ -6,19 +6,35 @@
 <meta http-equiv="Expires" content="mon,4 Apr 2020 21:00:00 GMT">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="Refresh" content="2; url=topic.htm">
-<script type="text/javascript" charset="utf-8"  src="https://files.cnblogs.com/files/liuzhou1/L2Dwidget.0.min.js"></script>
-<script type="text/javascript" charset="utf-8"  src="https://files.cnblogs.com/files/liuzhou1/L2Dwidget.min.js"></script>
-<script type="text/javascript">
-    L2Dwidget.init({"display": {
-        "superSample": 2,
-        "width": 200,
-        "height": 400,
-        "position": "right",
-        "hOffset": 0,
-        "vOffset": 0
-          }
-     });
-</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Live2D 看板娘 v1.4 / Demo 1</title>
+    <link rel="stylesheet" type="text/css" href="waifu.min.css?v=1.4.2"/>
+
+    <!-- waifu-tips.js 依赖 JQuery 库 -->
+    <script src="jquery.min.js?v=3.3.1"></script>
+    
+    <!-- 实现拖动效果，需引入 JQuery UI -->
+    <script src="jquery-ui.min.js?v=1.12.1"></script>
+    
+    <script src="waifu-tips.min.js?v=1.4.2"></script>
+    <script src="live2d.min.js?v=1.0.5"></script>
+    <script type="text/javascript">
+        /* 可直接修改部分参数 */
+        live2d_settings['modelId'] = 1;                  // 默认模型 ID
+        live2d_settings['modelTexturesId'] = 87;         // 默认材质 ID
+        live2d_settings['modelStorage'] = false;         // 不储存模型 ID
+        live2d_settings['canCloseLive2d'] = false;       // 隐藏 关闭看板娘 按钮
+        live2d_settings['canTurnToHomePage'] = false;    // 隐藏 返回首页 按钮
+        live2d_settings['waifuSize'] = '600x535';        // 看板娘大小
+        live2d_settings['waifuTipsSize'] = '570x150';    // 提示框大小
+        live2d_settings['waifuFontSize'] = '30px';       // 提示框字体
+        live2d_settings['waifuToolFont'] = '36px';       // 工具栏字体
+        live2d_settings['waifuToolLine'] = '50px';       // 工具栏行高
+        live2d_settings['waifuToolTop'] = '-60px';       // 工具栏顶部边距
+        live2d_settings['waifuDraggable'] = 'axis-x';    // 拖拽样式
+        /* 在 initModel 前添加 */
+        initModel("assets/waifu-tips.json?v=1.4.2")
+    </script>
 <style>#live2dcanvas {
     border: 0 !important
 }

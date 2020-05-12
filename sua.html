@@ -36,13 +36,7 @@ var age =  document.getElementById("age").value;
 
 var user  = {
 
-   username: username,
-
-      age: age
-
-   }
-
-//使用stringify()将JSON对象序列号并存入到sessionStorage
+   username: username,列号并存入到sessionStorage
 
 window.sessionStorage.setItem("user",JSON.stringify(user));
 
@@ -56,7 +50,7 @@ document.getElementById("getsessionStorageId").onclick  = function() {
 
    var valu = window.sessionStorage.getItem("user");
 
-   alert('我叫'..valu.username+',今年'..valu.age+'岁了。');
+   alert("我叫"..valu.username+",今年"..valu.age+"岁了。');
 
 };
 

@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <title>VUE.JS仿酷狗音乐播放器代码 - 站长素材</title>
 
-<script src="js/main.js"></script>
+<script src="main.js"></script>
 
-<link rel="stylesheet" href="css/common.css" />
+<link rel="stylesheet" href="common.css" />
 
 </head>
 <body>
@@ -37,9 +37,9 @@
 				</div>
 			</div>
 			<div class="btnGroup">
-				<img src="img/ljiantou.png" @click="addClick" />
-				<img :src="btnState ?'img/over.png':'img/open.png'" @click="changeClick" />
-				<img src="img/rjiantou.png" @click="reduceClick" />
+				<img src="ljiantou.png" @click="addClick" />
+				<img :src="btnState ?'img/over.png':'open.png'" @click="changeClick" />
+				<img src="rjiantou.png" @click="reduceClick" />
 			</div>
 		</div>
 	</div>

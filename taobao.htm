@@ -1,4 +1,437 @@
+<!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8">
+<title>VUE.JS仿酷狗音乐播放器代码 - 站长素材</title>
+
+<script src="js/main.js"></script>
+
+<link rel="stylesheet" href="css/common.css" />
+
+</head>
+<body>
+
+<div id="app">
+	<div id="body">
+		<div class="main" v-for="(item,index) in musicList" :key="index" v-show="item.isShow">
+			<div class="top">
+				<h3>{{item.title}}</h3>
+				<p>{{item.txtname}}<span @click="item.focuState=!item.focuState" :class="item.focuState?'active':''">{{item.focuState?'已关注':'+关注'}}<img src="img/heart.png" v-show="item.focuState"></span></p>
+			</div>
+			<div class="box">
+				<ul class="info">
+					<li v-for="key in item.messageList">
+						<span>{{key.name}}</span>
+					</li>
+					<audio :src="item.audioSrc" @timeupdate="audioClick(index)"></audio>
+				</ul>
+			</div>
+			<div class="proBar">
+				<div class="bar clearfix">
+					<span class="fl">{{newstarTime}}</span>
+					<div class="barTwig fl">
+						<div class="barRate" :style="{'width':widthStyle}"></div>
+						<div class="barBall" id="ball"></div>
+					</div>
+					<span class="fl" id="newT">{{newtoalTime}}</span>
+				</div>
+			</div>
+			<div class="btnGroup">
+				<img src="img/ljiantou.png" @click="addClick" />
+				<img :src="btnState ?'img/over.png':'img/open.png'" @click="changeClick" />
+				<img src="img/rjiantou.png" @click="reduceClick" />
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	var app = new Vue({
+		el: "#app",
+		data() {
+			return {
+				musicList: [{
+					title: '下山 (改编版)',
+					txtname: '小熊纯一郎 ',
+					messageList: [
+						{ time: "[00:00.00]", name: "小熊纯一郎 - 下山 (改编版)" },
+						{ time: "[00:13.33]", name: "要想寒假轻松过冬" },
+						{ time: "[00:15.33]", name: "先要忍受磨人期末考的痛" },
+						{ time: "[00:18.41]", name: "平时上课不认真玩世不恭" },
+						{ time: "[00:21.38]", name: "考试前脑子空空" },
+						{ time: "[00:25.02]", name: "每天是彻夜地用功" },
+						{ time: "[00:27.05]", name: "希望在最后几周突击成功" },
+						{ time: "[00:30.10]", name: "放假回家的我 玩耍的我" },
+						{ time: "[00:33.41]", name: "叫一个快活" },
+						{ time: "[00:36.49]", name: "我左手柯南挂窗前" },
+						{ time: "[00:39.26]", name: "右手贝多芬箴言" },
+						{ time: "[00:42.20]", name: "早上背诵知识点" },
+						{ time: "[00:45.15]", name: "晚上习题卷" },
+						{ time: "[00:47.74]", name: "我忍辱负重为明天" },
+						{ time: "[00:50.97]", name: "抱佛脚为及格线" },
+						{ time: "[00:53.90]", name: "切记要日行一善" },
+						{ time: "[00:56.83]", name: "比方说三连" },
+						{ time: "[01:11.68]", name: "我左手柯南挂窗前" },
+						{ time: "[01:14.36]", name: "右手贝多芬箴言" },
+						{ time: "[01:17.27]", name: "早上背诵知识点" },
+						{ time: "[01:20.18]", name: "晚上习题卷" },
+						{ time: "[01:22.82]", name: "我忍辱负重为明天" },
+						{ time: "[01:26.09]", name: "抱佛脚为及格线" },
+						{ time: "[01:29.00]", name: "切记要日行一善" },
+						{ time: "[01:31.91]", name: "比方说三连" }
+					],
+					isShow: true,
+					audioSrc: 'http://downsc.chinaz.net/Files/DownLoad/sound1/201912/12287.mp3',
+					focuState:true
+				}, {
+					title: '武汉！武汉！',
+					txtname: '刘涛/黄晓明/平安/尚雯婕',
+					messageList: [
+						{ time: "[00:00.00]", name: "武汉!武汉 - 刘涛/黄晓明/平安/尚雯婕" },
+						{ time: "[00:04.53]", name: "词：贾乃锐/饶隽" },
+						{ time: "[00:05.72]", name: "曲：刘岳" },
+						{ time: "[00:06.24]", name: "编曲：毕健博" },
+						{ time: "[00:07.08]", name: "总策划：李春良/徐滔" },
+						{ time: "[00:08.54]", name: "策划：潘全心/庄小红" },
+						{ time: "[00:10.04]", name: "音乐制作：刘岳/杨振" },
+						{ time: "[00:11.61]", name: "出品：北京广播电视台" },
+						{ time: "[00:16.88]", name: "每一个夜晚" },
+						{ time: "[00:20.43]", name: "你头枕长江臂弯" },
+						{ time: "[00:24.59]", name: "数着星星入眠" },
+						{ time: "[00:28.46]", name: "东湖水映着你笑脸" },
+						{ time: "[00:32.38]", name: "嗯" },
+						{ time: "[00:34.55]", name: "天空飘来了乌云" },
+						{ time: "[00:38.32]", name: "遮住你往日容颜" },
+						{ time: "[00:42.34]", name: "它想夺去你微笑" },
+						{ time: "[00:46.44]", name: "这将是一场考验" },
+						{ time: "[00:50.55]", name: "武汉 武汉" },
+						{ time: "[00:54.44]", name: "中国的孩子" },
+						{ time: "[00:56.62]", name: "心手相连" },
+						{ time: "[00:58.81]", name: "去把那些阴霾驱散" },
+						{ time: "[01:02.53]", name: "用爱将希望点燃" },
+						{ time: "[01:06.62]", name: "武汉 武汉" },
+						{ time: "[01:10.50]", name: "风雨后天空更蔚蓝" },
+						{ time: "[01:14.98]", name: "这一场战疫" },
+						{ time: "[01:16.88]", name: "胜利一定是" },
+						{ time: "[01:18.78]", name: "唯一答案 唯一答案" },
+						{ time: "[01:24.11]", name: "武汉" },
+						{ time: "[01:32.80]", name: "清晨中醒来" },
+						{ time: "[01:36.55]", name: "我用爱对你呼唤" },
+						{ time: "[01:40.56]", name: "英雄和天使啊" },
+						{ time: "[01:44.33]", name: "多么坚强和勇敢" },
+						{ time: "[01:48.34]", name: "天空飘来了乌云" },
+						{ time: "[01:52.39]", name: "遮住你往日容颜" },
+						{ time: "[01:56.46]", name: "它想夺去你微笑" },
+						{ time: "[02:00.32]", name: "这就是一场考验" },
+						{ time: "[02:04.65]", name: "武汉 武汉" },
+						{ time: "[02:08.48]", name: "中国的孩子" },
+						{ time: "[02:10.66]", name: "心手相连" },
+						{ time: "[02:12.80]", name: "去把那些阴霾驱散" },
+						{ time: "[02:16.49]", name: "用爱将希望点燃" },
+						{ time: "[02:20.47]", name: "武汉 武汉" },
+						{ time: "[02:24.46]", name: "风雨后天空更蔚蓝" },
+						{ time: "[02:28.86]", name: "这一场战疫" },
+						{ time: "[02:30.70]", name: "胜利一定是" },
+						{ time: "[02:32.67]", name: "唯一答案 唯一答案" },
+						{ time: "[02:38.17]", name: "武汉" },
+						{ time: "[02:42.65]", name: "我知道你很痛" },
+						{ time: "[02:46.73]", name: "我痛着你的痛" },
+						{ time: "[02:50.59]", name: "对你的爱从未改变" },
+						{ time: "[02:54.55]", name: "亿万同胞携手向前" },
+						{ time: "[02:58.46]", name: "拥抱" },
+						{ time: "[03:02.44]", name: "明天 明天" },
+						{ time: "[03:06.31]", name: "武汉 武汉" },
+						{ time: "[03:10.72]", name: "中国的孩子" },
+						{ time: "[03:12.61]", name: "心手相连" },
+						{ time: "[03:14.84]", name: "去把那些阴霾驱散" },
+						{ time: "[03:18.62]", name: "用爱将希望点燃" },
+						{ time: "[03:22.50]", name: "武汉 武汉" },
+						{ time: "[03:26.61]", name: "风雨后天空更蔚蓝" },
+						{ time: "[03:30.73]", name: "这一场战疫" },
+						{ time: "[03:32.79]", name: "胜利一定是" },
+						{ time: "[03:34.78]", name: "唯一答案 唯一答案" },
+						{ time: "[03:39.93]", name: "武汉 武汉 武汉" },
+						{ time: "[03:48.46]", name: "武汉 武汉 武汉" },
+						{ time: "[03:56.20]", name: "武汉" }
+					],
+					isShow: false,
+					audioSrc: 'http://downsc.chinaz.net/Files/DownLoad/sound1/201912/12287.mp3',
+					focuState:false
+				}, {
+					title: '再给世界一点光',
+					txtname: '亮少',
+					messageList: [
+						{ time: "[00:00.00]", name: "再给世界一点光" },
+						{ time: "[00: 00.00]", name: " 作词： 魏巍" },
+						{ time: "[00: 01.25]", name: " 作曲： 林林" },
+						{ time: "[00: 21.00]", name: " 驰骋在大地的胸膛" },
+						{ time: "[00: 23.90]", name: " 追逐着黎明的目光" },
+						{ time: "[00: 29.78]", name: " 一路跌撞 一路成长" },
+						{ time: "[00: 32.98]", name: "不做命运的败将" },
+						{ time: "[00: 38.52]", name: " 驰骋在梦想的战场" },
+						{ time: "[00: 41.42]", name: " 追逐着生命的曙光" },
+						{ time: "[00: 47.17]", name: " 路有风霜 心似骄阳" },
+						{ time: "[00: 50.31]", name: " 敢向命运露锋芒" },
+						{ time: "[00: 55.85]", name: " 再给世界一点光 一点光" },
+						{ time: "[01: 00.51]", name: "给世界一点指引信念的光" },
+						{ time: "[01: 05.67]", name: " 天高地广 来去堂堂" },
+						{ time: "[01: 10.53]", name: " 不屈不挠不狂" },
+						{ time: "[01: 13.52]", name: " 再给世界一点光 一点光" },
+						{ time: "[01: 18.11]", name: " 给世界一点温暖心灵的光" },
+						{ time: "[01: 23.26]", name: " 只因无悔 不惧无常" },
+						{ time: "[01: 27.87]", name: " 我痴我笑我狂" },
+						{ time: "[01: 31.14]", name: " 给世界一点光" },
+						{ time: "[01: 37.56]", name: " 驰骋在大地的胸膛" },
+						{ time: "[01: 40.32]", name: " 追逐着黎明的目光" },
+						{ time: "[01: 46.22]", name: " 一路跌撞 一路成长" },
+						{ time: "[01: 49.43]", name: " 不做命运的败将" },
+						{ time: "[01: 54.98]", name: " 驰骋在梦想的战场" },
+						{ time: "[01: 57.72]", name: " 追逐着生命的曙光" },
+						{ time: "[02: 03.66]", name: " 路有风霜 心似骄阳" },
+						{ time: "[02: 06.82]", name: " 敢向命运露锋芒" },
+						{ time: "[02: 12.31]", name: "再给世界一点光 一点光" },
+						{ time: "[02: 16.95]", name: " 给世界一点指引信念的光" },
+						{ time: "[02: 22.09]", name: "天高地广 来去堂堂" },
+						{ time: "[02: 26.68]", name: " 不屈不挠不狂" },
+						{ time: "[02: 29.69]", name: "再给世界一点光 一点光" },
+						{ time: "[02: 34.44]", name: "给世界一点温暖心灵的光" },
+						{ time: "[02: 39.49]", name: " 只因无悔 不惧无常" },
+						{ time: "[02: 44.09]", name: " 我痴我笑我狂" },
+						{ time: "[02: 47.43]", name: " 给世界一点光" },
+						{ time: "[03: 13.39]", name: " 再给世界一点光 一点光" },
+						{ time: "[03: 18.14]", name: " 给世界一点指引信念的光" },
+						{ time: "[03: 23.11]", name: " 天高地广 来去堂堂" },
+						{ time: "[03: 27.78]", name: " 不屈不挠不狂" },
+						{ time: "[03: 30.68]", name: " 再给世界一点光 一点光" },
+						{ time: "[03: 35.38]", name: " 给世界一点温暖心灵的光" },
+						{ time: "[03: 40.51]", name: " 只因无悔 不惧无常" },
+						{ time: "[03: 45.18]", name: " 我痴我笑我狂" },
+						{ time: "[03: 48.41]", name: " 给世界一点光" }
+					],
+					isShow: false,
+					audioSrc: 'http://downsc.chinaz.net/Files/DownLoad/sound1/201912/12287.mp3',
+					focuState:false
+				}, {
+					title: '我爱他',
+					txtname: '叮当',
+					messageList: [
+						{ time: "[00: 24.95]", name: " 他的轻狂留在某一节车厢" },
+						{ time: "[00: 30.69]", name: " 地下铁里的风比回忆还重" },
+						{ time: "[00: 36.60]", name: " 这座城市一直等着我" },
+						{ time: "[00: 41.27]", name: " 有一段感情还在漂泊" },
+						{ time: "[00: 47.98]", name: " 对他唯一遗憾是分手那天" },
+						{ time: "[00: 54.12]", name: " 我奔腾的眼泪都停不下来" },
+						{ time: "[00: 59.92]", name: " 若那一刻重来我不哭" },
+						{ time: "[01: 04.75]", name: " 让他知道我可以很好" },
+						{ time: "[01: 09.27]", name: " 我爱他轰轰烈烈最疯狂" },
+						{ time: "[01: 14.80]", name: " 我的梦狠狠碎过却不会忘" },
+						{ time: "[01: 20.84]", name: " 曾为他相信明天就是未来" },
+						{ time: "[01: 26.69]", name: " 情节有多坏都不肯醒来" },
+						{ time: "[01: 32.48]", name: " 我爱他跌跌撞撞到绝望" },
+						{ time: "[01: 38.37]", name: " 我的心深深伤过却不会忘" },
+						{ time: "[01: 44.27]", name: " 我和他不再属于这个地方" },
+						{ time: "[01: 50.15]", name: " 最初的天堂最重的荒唐" },
+						{ time: "[02: 27.88]", name: " 如果还有遗憾又怎么样呢" },
+						{ time: "[02: 33.62]", name: " 伤了痛了懂了就能好了吗" },
+						{ time: "[02: 39.41]", name: " 曾经依靠彼此的肩膀" },
+						{ time: "[02: 44.13]", name: " 如今各自在人海流浪" },
+						{ time: "[02: 48.55]", name: " 我爱他轰轰烈烈最疯狂" },
+						{ time: "[02: 54.49]", name: " 我的梦狠狠碎过却不会忘" },
+						{ time: "[03: 00.48]", name: " 逃不开爱越深越互相伤害" },
+						{ time: "[03: 06.27]", name: " 越深的依赖越多的空白" },
+						{ time: "[03: 11.76]", name: " 该怎么去爱" },
+						{ time: "[03: 18.00]", name: " 我爱他轰轰烈烈最疯狂" },
+						{ time: "[03: 23.89]", name: " 我的梦狠狠碎过却不会忘" },
+						{ time: "[03: 29.58]", name: " 曾为他相信明天就是未来" },
+						{ time: "[03: 35.47]", name: " 情节有多坏都不肯醒来" },
+						{ time: "[03: 41.67]", name: " 我爱他跌跌撞撞到绝望" },
+						{ time: "[03: 47.06]", name: " 我的心深深伤过却不会忘" },
+						{ time: "[03: 52.95]", name: " 我和他不再属于这个地方" },
+						{ time: "[03: 58.92]", name: " 最初的天堂最重的荒唐" },
+						{ time: "[04: 07.00]", name: " 如果还有遗憾是分手那天" },
+						{ time: "[04: 13.25]", name: " 我奔腾的眼泪都停不下来" },
+						{ time: "[04: 19.34]", name: " 若那一刻重来我不哭" },
+						{ time: "[04: 24.01]", name: " 让他知道我可以很好" }
+					],
+					isShow: false,
+					audioSrc: 'http://downsc.chinaz.net/Files/DownLoad/sound1/201912/12287.mp3',
+					focuState:false
+				}],
+				musicIndex: 0,
+				btnState: false,
+				newtoalTime: 0,
+				newstarTime: 0,
+				startTime: 0,
+				endTimer: 0,
+				widthStyle: 0,
+				timeList: [],
+				itemIndex: 0,
+				heightNum: 0
+			}
+		},
+		mounted: function() {
+			this.newtoalTime = '0:00';
+			this.newstarTime = '0:00'
+		},
+		methods: {
+			/*focusClick(index){
+				if(this.musicList[this.musicIndex].isShow){
+					this.musicList[this.musicIndex].focuState=!this.musicList[this.musicIndex].focuState
+				}
+			},*/
+			addClick() {
+				var aAuto = document.getElementsByTagName('audio');
+				var oBody = document.getElementById('body');
+				var aItems = oBody.getElementsByTagName('li');
+				var aInfo = document.getElementsByClassName('info');
+				for(var i in this.musicList) {
+					this.musicList[i].isShow = false
+				}
+				if(this.musicIndex >= (this.musicList.length - 1)) {
+					this.musicIndex = this.musicList.length - 1;
+				} else {
+					this.musicIndex++;
+					this.btnState = false;
+					if(!this.btnState) {
+						for(var i in this.musicList) {
+							aAuto[i].pause()
+						}
+					}
+					this.timeList = [];
+					aAuto[this.musicIndex].currentTime = 0;
+					this.newstarTime = '0:00';
+					for(var t = 0; t < aItems.length; t++) {
+						aItems[t].className = ''
+					}
+					for(var s=0;s<aInfo.length;s++){
+						aInfo[s].style.top=0+'px'
+					}
+				}
+				this.musicList[this.musicIndex].isShow = true;
+
+			},
+			reduceClick() {
+				var aAuto = document.getElementsByTagName('audio');
+				var oBody = document.getElementById('body');
+				var aItems = oBody.getElementsByTagName('li');
+				var aInfo = document.getElementsByClassName('info')
+				for(var i in this.musicList) {
+					this.musicList[i].isShow = false
+				}
+				if(this.musicIndex <= 0) {
+					this.musicIndex = 0;
+				} else {
+					this.musicIndex--
+						this.btnState = false;
+					if(!this.btnState) {
+						for(var i in this.musicList) {
+							aAuto[i].pause()
+						}
+					}
+					this.timeList = [];
+					aAuto[this.musicIndex].currentTime = 0;
+					this.newstarTime = '0:00';
+					for(var t = 0; t < aItems.length; t++) {
+						aItems[t].className = ''
+					}
+					for(var s=0;s<aInfo.length;s++){
+						aInfo[s].style.top=0+'px'
+					}
+				}
+				this.musicList[this.musicIndex].isShow = true;
+			},
+			changeClick() {
+				var aAuto = document.getElementsByTagName('audio');
+				var aInfo = document.getElementsByClassName('info');
+				this.btnState = !this.btnState
+				if(this.btnState) {
+					aAuto[this.musicIndex].play();
+					this.audioClick();
+					for(var i in this.musicList[this.musicIndex].messageList) {
+						this.timeList.push(parseFloat((this.musicList[this.musicIndex].messageList[i].time).substr(1, 3)) * 60 + parseFloat((this.musicList[this.musicIndex].messageList[i].time).substr(4, 9)))
+					}
+				} else {
+					aAuto[this.musicIndex].pause();
+					this.timeList = [];
+
+				}
+			},
+			audioClick() {
+				var aAuto = document.getElementsByTagName('audio');
+				var aitemNum = document.getElementsByClassName('barRate');
+				var aBall = document.getElementsByClassName('barBall');
+				var aInfo = document.getElementsByClassName('info');
+				var aLi = aInfo[this.musicIndex].getElementsByTagName('li');
+				var oBody = document.getElementById('body');
+				var aItems = oBody.getElementsByTagName('li');
+				this.startTime = Math.round(aAuto[this.musicIndex].currentTime);
+				if((this.startTime / 60) < 1) {
+					if(this.startTime < 10) {
+						this.newstarTime = 0 + ':' + '0' + this.startTime
+					} else {
+						this.newstarTime = 0 + ':' + this.startTime
+					}
+				} else {
+					if(this.startTime % 60 < 10) {
+						this.newstarTime = parseInt(this.startTime / 60) + ':' + '0' + this.startTime % 60
+					} else {
+						this.newstarTime = parseInt(this.startTime / 60) + ':' + this.startTime % 60
+					}
+				}
+				this.endTimer = Math.round(aAuto[this.musicIndex].duration)
+				if((this.endTimer % 60) < 10) {
+					this.newtoalTime = parseInt(this.endTimer / 60) + ':' + '0' + Math.round(this.endTimer % 60)
+				} else {
+					this.newtoalTime = parseInt(this.endTimer / 60) + ':' + Math.round(this.endTimer % 60)
+				}
+				this.widthStyle = ((aAuto[this.musicIndex].currentTime) / (aAuto[this.musicIndex].duration)).toFixed(2) * 100 + '%';
+				aBall[this.musicIndex].style.left = this.widthStyle
+				aitemNum[this.musicIndex].style.height = '100%';
+				aitemNum[this.musicIndex].style.background = '#58b2dc';
+				if(parseInt(this.widthStyle) == 100) {
+					this.btnState = false;
+				}
+				for(var i = 0; i < this.timeList.length; i++) {
+					aLi[i].className = ''
+					if(this.startTime > this.timeList[i] && this.startTime < this.timeList[i + 1]) {
+						this.itemIndex = i;
+						this.heightNum = -26 * this.itemIndex;
+						aLi[this.itemIndex].className = 'on';
+						aInfo[this.musicIndex].style.top = this.heightNum+'px';
+						if(aInfo[this.musicIndex].offsetHeight-Math.abs(this.heightNum)<=318){
+							this.heightNum=-(aInfo[this.musicIndex].offsetHeight-318)
+							aInfo[this.musicIndex].style.top = this.heightNum+'px';
+						}
+					}
+					if(this.startTime > (this.timeList[this.timeList.length - 2] + 2) && this.startTime < (this.endTimer - 1)) {
+						aLi[this.timeList.length - 1].className = 'on';
+						aLi[this.timeList.length - 2].className = '';
+					}
+				}
+				if(this.startTime == this.endTimer) {
+					this.btnState=false
+					aAuto[this.musicIndex].pause();
+					this.timeList = [];
+					aAuto[this.musicIndex].currentTime = 0;
+					this.newstarTime = '0:00';
+					for(var t = 0; t < aItems.length; t++) {
+						aItems[t].className = ''
+					}
+					for(var s=0;s<aInfo.length;s++){
+						aInfo[s].style.top=0+'px'
+					}
+				}
+			}
+		}
+	})
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Opera、傲游、搜狗、世界之窗. 不支持Safari、IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html
 <head>
 <style content="text\css">
 <meta charset="utf-8">

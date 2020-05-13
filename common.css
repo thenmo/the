@@ -1,0 +1,187 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+.clearfix:after {
+	display: block;
+	clear: both;
+	content: ''
+}
+
+.fl {
+	float: left;
+}
+
+li {
+	list-style: none;
+}
+
+h3 {
+	font-weight: normal;
+}
+
+.main {
+	width: 300px;
+	height: 500px;
+	background: url(../img/kegou.jpg)no-repeat center 10px;
+	border-radius: 5px;
+	margin: 50px auto;
+	padding: 10px;
+	color: #fff;
+}
+
+.top {
+	text-align: center;
+}
+
+.top h3 {
+	font-size: 24px;
+	padding: 10px;
+}
+
+.top span {
+	display: inline-block;
+	padding: 0px 2px;
+	border-radius: 5px;
+	margin-left: 8px;
+	font-size: 12px;
+	border: 1px solid #fff;
+	position: relative;
+}
+.top span.active{
+	border: 1px solid #85c6e6;
+	background:#078ed0;
+}
+.top span img {
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	top: -5px;
+	right: -6px;
+	transform: rotate(30deg);
+	-ms-transform: rotate(30deg);
+	-moz-transform: rotate(30deg);
+	-webkit-transform: rotate(30deg);
+	-o-transform: rotate(30deg);
+	animation: Anim 2s linear 1s infinite;
+}
+
+@keyframes Anim {
+	0% {
+		opacity:0;
+		top: -5px;
+		right:-6px;
+	}
+	30% {
+		opacity:1;
+		top: -7px;
+		right:-8px;
+	}
+	65% {
+		opacity:0.5;
+		top: -9px;
+		right:-10px;
+	}
+	100% {
+		opacity:0;
+		top: -12px;
+		right:-12px;
+	}
+}
+
+.box {
+	margin-top: 10px;
+	text-align: center;
+	height: 320px;
+	overflow: hidden;
+	position: relative;
+}
+
+.info {
+	width: 220px;
+	margin: 0px auto;
+	text-align: center;
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	margin-left: -100px;
+}
+
+.info li {
+	padding: 5px;
+	font-size: 12px;
+}
+
+.proBar {
+	height: 5px;
+	margin: 17px 10px 10px 10px;
+}
+
+.bar {
+	width: 100%;
+	margin: 0px auto;
+}
+
+.barTwig {
+	/*background: #58b2dc;*/
+	background: #fff;
+	width: 180px;
+	height: 2px;
+	border-radius: 2px;
+	position: relative;
+}
+
+.proBar span {
+	font-size: 12px;
+	margin-top: -7px;
+	margin-right: 8px;
+	width: 32px;
+	height: 16px;
+}
+
+.proBar span:last-child {
+	margin-left: 15px;
+}
+
+.barBall {
+	position: absolute;
+	left: 0px;
+	top: -3px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #fff;
+}
+
+.btnRow {
+	text-align: center;
+}
+
+.btnRow img {
+	width: 30px;
+	height: 30px;
+}
+
+.btnGroup {
+	width: 200px;
+	margin: 0px auto;
+	text-align: center;
+	height: 40px;
+}
+
+.btnGroup img {
+	margin: 8px;
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+}
+
+.btnGroup img:nth-child(2) {
+	width: 30px;
+	height: 30px;
+}
+
+.on span {
+	color: #ffe48a;
+}

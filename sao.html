@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
+<title>jQuery二维条形码识别代码 - 站长素材</title>
+
+<style type="text/css">
+.imghelp{
+  width: 100%;
+  z-index:100;
+  opacity: 0;
+}
+.selector{
+  cursor:pointer;
+}
+.btn {
+	width: 290px;
+	border: 1px #000 solid;
+	position: absolute;
+}
+ul{
+  margin-bottom:0;
+  margin-right:40px;
+}
+li{
+  display:inline;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  font-weight: bold;
+  border-right: 1px solid #333333;
+}
+li a{
+  text-decoration: none;
+  color: black;
+}
+.tsel{
+    padding:0;
+}
+.hide {
+  display: none;
+}
+.border {
+  border:1px #000 solid;
+}
+</style>
+
+</head>
+<body>
+
+<div id="main">
+	<div id="header">
+	  <p id="mp1">
+	  </p>
+	</div>
+	<div id="mainbody" style="display: inline;">
+	  <table class="tsel" border="0" width="100%">
+		<tbody>
+		  <tr>
+			<td valign="top" align="center" width="50%">
+			  <table class="tsel" border="0">
+				<tbody>
+				  <tr>
+					<td><img class="selector hide" id="webcamimg" src="./qr/vid.png" onClick="setwebcam()" align="left" style="opacity: 1;"></td>
+					<td>
+					  <img class="selector hide" id="qrimg" src="./qr/cam.png" onClick="setimg()" align="right" style="opacity: 0.2;">
+					</td>
+				  </tr>
+				  <tr>
+					<td colspan="2" align="center">
+					  <div id="outdiv">
+						<div id="qrfile"><canvas id="out-canvas" class="border" width="290"></canvas>
+							<div class="imghelp">
+								  <div class="btn">点击选择二维码</div>
+								  <input class="imghelp" type="file" onChange="handleFiles(this.files)">
+							</div>
+						</div>
+					  </div>
+					</td>
+				  </tr>
+				</tbody>
+			  </table>
+			</td>
+		  </tr>
+		  <tr>
+			<td colspan="3" align="center">
+			  <img class="hide" src="./qr/down.png">
+			</td>
+		  </tr>
+		  <tr>
+			<td colspan="3" align="center">
+			  <div>
+				<span>
+					扫描结果:
+				</span><input type="text"  id="result">
+			  </div>
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+</div>
+<canvas id="qr-canvas"></canvas>
+<!--条形码-->
+<input type="file" style="display:none" id="barCode" capture="camera" accept="image/*" mutiple="mutiple" capture="camera" />
+<div class="m-12" style="width: 100%;display: flex;justify-content: center;align-content: center;flex-direction: column;">
+	<div style="width: 300px;margin: 0 auto;">
+		<img id="img" class="mt-12" width="300" height="180" style="display:block;text-align: center;" />
+		<p class="codeInfo"></p>
+		<button type="button" onClick="$('#barCode').click()"  style="width: 300px;">点击识别条形码</button>
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/DecoderWorker.js"></script>
+<script type="text/javascript" src="js/exif.js"></script>
+<script type="text/javascript" src="js/BarcodeReader.js"></script>
+<script type="text/javascript" src="js/llqrcode.js"></script>
+<script type="text/javascript" src="js/webqr.js"></script>
+<script type="text/javascript">
+	load();
+	function login () {
+		var hostSn = document.getElementById('result').value;
+	};
+	$(function() {
+		compatibleInput();
+		var timeStart = '';
+		var timeEnd = '';
+		BarcodeReader.Init();
+		BarcodeReader.SetImageCallback(function(result) {
+			console.dir(result);
+			if(!result.length) {
+
+				$(".codeInfo").html('条形码读取失败');
+				return
+			}
+			var barcode = result[0];
+			if(barcode.Value) {
+				$(".codeInfo").html('扫描结果:' + barcode.Value);
+			}
+			timeStart1 = new Date()
+			console.log(timeStart1)
+			var date3 = timeStart1.getTime() - timeStart.getTime() //时间差的毫秒数
+		});
+		document.querySelector("#barCode").addEventListener('change', function(evt) {
+			timeStart = new Date()
+			console.log(timeStart)
+			var file = evt.target.files[0];
+			reader = new FileReader();
+			console.log(reader)
+			reader.onloadend = function() {
+				var img = new Image();
+				img.src = reader.result;
+				console.log(img)
+				BarcodeReader.DecodeImage(img);
+			}
+			console.log(file)
+			//			$('#img').attr('src', window.createObjectURLcre(file))   ;   
+			reader.readAsDataURL(file);
+			img.src = URL.createObjectURL(file)
+
+		}, false);
+	});
+	// 判断当前是否属于ios移动端，兼容input同时调用手机相册和相机
+	function compatibleInput(){
+		  //获取浏览器的userAgent,并转化为小写
+		  var ua = navigator.userAgent.toLowerCase();
+		  //判断是否是苹果手机，是则是true
+		  var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+		  if (isIos) {
+			$("input:file").removeAttr("capture");
+		};
+	}
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：360、FireFox、Chrome、Opera、傲游、搜狗、世界之窗. 不支持Safari、IE8及以下浏览器。</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>
+

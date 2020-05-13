@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>VUE.JS仿酷狗音乐播放器代码 - 站长素材</title>
+<title>酷狗音乐播放器- 站长素材</title>
 
 <script src="main.js"></script>
 
@@ -11,12 +11,12 @@
 </head>
 <body>
 
-<div id="app">
+<div id="app" bgcolor="#950170">
 	<div id="body">
 		<div class="main" v-for="(item,index) in musicList" :key="index" v-show="item.isShow">
 			<div class="top">
 				<h3>{{item.title}}</h3>
-				<p>{{item.txtname}}<span @click="item.focuState=!item.focuState" :class="item.focuState?'active':''">{{item.focuState?'已关注':'+关注'}}<img src="img/heart.png" v-show="item.focuState"></span></p>
+				<p>{{item.txtname}}<span @click="item.focuState=!item.focuState" :class="item.focuState?'active':''">{{item.focuState?'已关注':'+关注'}}<img src="heart.png" v-show="item.focuState"></span></p>
 			</div>
 			<div class="box">
 				<ul class="info">
@@ -38,7 +38,7 @@
 			</div>
 			<div class="btnGroup">
 				<img src="ljiantou.png" @click="addClick" />
-				<img :src="btnState ?'img/over.png':'open.png'" @click="changeClick" />
+				<img :src="btnState ?'over.png':'open.png'" @click="changeClick" />
 				<img src="rjiantou.png" @click="reduceClick" />
 			</div>
 		</div>
@@ -437,7 +437,7 @@
 <meta charset="utf-8">
 </style>
 </head>
-<body bgcolor="#950170">
+<body >
 <iframe src="www.taobao.com">
 </body>
 </html>

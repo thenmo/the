@@ -1,12 +1,8 @@
-<!DOCTYPE  html>
-
-<html>
-
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-
-<meta  charset="UTF-8">
-
-<title>sessionStorage</title>
+  <meta charset="UTF-8" />
+  <title>JS创建便笺删除代码 - 站长素材</title>
   <style type="text/css">
   body {
     margin: 0;
@@ -98,61 +94,6 @@
   </style>
   <script type="text/javascript" src="app.js"></script>
 </head>
-
 <body>
-
-姓名：  <input type="text" id="username"> 年龄：  <input type="text" id="age">
-
-<input  type="button" value="sessionStorage 设置数据"  11 id="sessionStorageId">
-
-<input  type="button" value="sessionStorage 获取数据"  id="getsessionStorageId">
-
-<input  type="button" value="sessionStorage 清除所有数据"  id="clearsessionStorageId">
-
-<script>
-
-//增加数据
-
-document.getElementById("sessionStorageId").onclick  = function() {
-
-//获取姓名和年龄输入框的值
-
-var  username = document.getElementById("username").value;
-
-var age =  document.getElementById("age").value;
-
-//定义一个user对象用来保存获取的信息
-
-var user  = {
-
-   username: username,列号并存入到sessionStorage
-
-window.sessionStorage.setItem("user",JSON.stringify(user));
-
-};
-
-//sessionStorage  里面存储数据，如果关闭了浏览器，数据就会消失..
-
-//单个浏览器窗口页面有效
-
-document.getElementById("getsessionStorageId").onclick  = function() {
-
-   var valu = window.sessionStorage.getItem("user");
-
-   alert();
-
-};
-
-//清除所有的数据
-
-document.getElementById("clearsessionStorageId").onclick  = function() {
-
-   window.sessionStorage.clear();
-
-};
-
-</script>
-
 </body>
-
 </html>

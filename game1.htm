@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>jQuery扑克牌发牌抽奖代码 - 站长素材</title>
+
+<link rel="stylesheet" type="text/css" href="index.css">
+
+</head>
+<body>
+
+<div id="projects">
+    <div class="grid">
+      <div class="projects">
+        <div class="project ">
+          <div class="mask">
+            <div class="back">7</div>
+            <div class="front"><span></span></div>
+          </div>
+        </div>
+        <div class="project ">
+          <div class="mask">
+            <div class="back">1</div>
+            <div class="front"><span></span></div>
+          </div>
+        </div>
+        <div class="project ">
+          <div class="mask">
+            <div class="back">5</div>
+            <div class="front"><span></span></div>
+          </div>
+        </div>
+        <div class="project ">
+          <div class="mask">
+            <div class="back">4</div>
+            <div class="front"><span></span></div>
+          </div>
+        </div>
+        <div class="project ">
+          <div class="mask">
+            <div class="back">3</div>
+            <div class="front"><span></span></div>
+          </div>
+        </div>
+        <div class="project ">
+          <div class="mask">
+            <div class="back">8</div>
+            <div class="front"><span></span></div>
+          </div>
+        </div>
+        <div class="project ">
+          <div class="mask">
+            <div class="back">6</div>
+            <div class="front"><span></span></div>
+          </div>
+        </div>
+        <div class="project ">
+          <div class="mask">
+            <div class="back">2</div>
+            <div class="front"><span></span></div>
+          </div>
+        </div>
+        <div class="aniwz ">
+          <div class="text">抽奖<br>游戏</div>
+        </div>
+        <div class="controls">
+          <span class="bottom"></span>
+          <span class="bottom"></span>
+          <span class="bottom"></span>
+          <div class="mask">
+            <div class="text start"><span>开</span><span>始</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="bg_bg"></div>
+<div class="bg_main">
+  <input type="text" value="" style="display:none;" />
+  <div class="info">确定选择这张吗？</div>
+  <div class="btn"><span class="qrxz">确认</span><span class="qxxz">取消</span></div>
+</div>
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $('.controls').click(function(){
+      if($(this).hasClass('show')){
+        $(this).removeClass('show');
+        $('.start').html('<span>开</span><span>始</span>');
+        subMove();
+      }else{
+        $(this).addClass('show');
+        $('.start').html('<span>重</span><span>置</span>');
+        addMove();
+      }
+    })
+
+    $('.project').click(function () {
+      if($(this).hasClass('showli')){
+        console.log(45);
+      }else{
+        var num = $(this).index();
+        $('.bg_main input').val(num);
+        $('.bg_bg').show();
+        $('.bg_main').show();
+      }
+    })
+    $('.qxxz').click(function () {
+      $('.bg_bg').hide();
+      $('.bg_main').hide();
+    })
+    $('.qrxz').click(function () {
+      var id = $(this).parent().parent().find('input').val();
+      //alert(id);
+      $('.ani'+id).addClass('showli');
+      $('.bg_bg').hide();
+      $('.bg_main').hide();
+    })
+  })
+
+  function addMove(){
+    $('.project').each(function(index,item){
+      setTimeout(function(){
+       $(item).addClass('ani'+ index);
+     },index*300);
+    })
+  }
+
+  function subMove(){
+    $('.project').each(function(index,item){
+      $('.project').removeClass('showli');
+      $(item).removeClass('ani'+ index);
+    })
+  }
+</script>
+
+</body>
+</html>

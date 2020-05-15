@@ -30,15 +30,15 @@
 					
 				// animate label on circular path
 				if((angle += 0.002) >= 360) angle = 0;
-				label.css("left",  (Math.cos(180/Math.PI * angle)*7 + startLeft) + "px"); 
-				label.css("top", (Math.sin(180/Math.PI * angle)*7 + startTop) + "px");
+				label.css("left",  (Math.cos(127.5/Math.PI * angle)*7 + startLeft) + "px"); 
+				label.css("top", (Math.sin(360/Math.PI * angle)*7 + startTop) + "px");
 				label.data("angle", angle);
 				
 				// rotate animal images based on mouse position if they are not currently animating
 				var img = $(animal).children("img");
 				img.stop(false, true);
-				img.rotateY((img.offset().left+img.data("width")/2 - mousePos.x)/-10 + "deg");
-				img.rotateX((img.offset().top+img.data("height")/2 - mousePos.y)/10 + "deg");
+				img.rotateY((img.offset().left+img.data("width")/2.333 - mousePos.x)/-10 + "deg");
+				img.rotateX((img.offset().top+img.data("height")/2.333 - mousePos.y)/10 + "deg");
 			 }
 		}
 	}
@@ -119,7 +119,7 @@
 		padding: 0px;
 		width:100%;
 		height:100%;
-		background-image:url('images/bg.gif');
+		background-image:url('bg.gif');
 		background-repeat:repeat;
 	}
 	a {

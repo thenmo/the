@@ -22,6 +22,94 @@ body{background:#eeeeee;}
 #kidmask{background:#ffffff;width:120px;height:20px;position:absolute;z-index:1;margin-left:8px;}
 .item{background:#cccccc;width:128px;height:20px;}
 .item a{margin-left:20px;}
+	/* easeInQuint */
+
+@import url(http://fonts.googleapis.com/css?family=Lato);
+* {
+    box-sizing: border-box;
+}
+body {
+    background-color: #e7e0d9;
+}
+.nav {
+    margin-top: 50px;
+}
+.nav:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.nav__trigger {
+    position: absolute;
+    top: 35px;
+    left: 100%;
+    background-color: #e7e0d9;
+    border: 1px solid #876543;
+    padding: 6px 10px;
+    font-family: 'Lato', sans-serif;
+    color: #876543;
+    cursor: pointer;
+    -webkit-transition: 300ms left ease-in;
+    transition: 300ms left ease-in;
+}
+.nav__trigger.nav__trigger--active {
+    left: calc(100% - 100px);
+    -webkit-transition: 300ms left 1000ms ease-in;
+    transition: 300ms left 1000ms ease-in;
+}
+.nav__list {
+    position: relative;
+}
+.nav__list:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.nav__item {
+    position: absolute;
+    width: 25%;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    opacity: 1;
+}
+.nav__item:first-of-type {
+    left: 0;
+    -webkit-transition: opacity 650ms cubic-bezier(0.755, 0.05, 0.855, 0.06), left 750ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transition: opacity 650ms cubic-bezier(0.755, 0.05, 0.855, 0.06), left 750ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transition-delay: 0;
+    transition-delay: 0;
+}
+.nav__item:nth-of-type(2) {
+    left: 25%;
+    -webkit-transition: opacity 650ms cubic-bezier(0.755, 0.05, 0.855, 0.06), left 750ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transition: opacity 650ms cubic-bezier(0.755, 0.05, 0.855, 0.06), left 750ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transition-delay: 200ms;
+    transition-delay: 200ms;
+}
+.nav__item:nth-of-type(3) {
+    left: 50%;
+    -webkit-transition: opacity 650ms cubic-bezier(0.755, 0.05, 0.855, 0.06), left 750ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transition: opacity 650ms cubic-bezier(0.755, 0.05, 0.855, 0.06), left 750ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transition-delay: 400ms;
+    transition-delay: 400ms;
+}
+.nav__item:last-of-type {
+    left: 75%;
+    -webkit-transition: opacity 650ms cubic-bezier(0.755, 0.05, 0.855, 0.06), left 750ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transition: opacity 650ms cubic-bezier(0.755, 0.05, 0.855, 0.06), left 750ms cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transition-delay: 600ms;
+    transition-delay: 600ms;
+}
+.nav__item.nav__item--animate {
+    left: 100%;
+    opacity: 0;
+}
+.nav__link {
+    padding: 10px 0;
+    font-family: 'Lato', sans-serif;
+    color: #876543;
+}
 </style>
 <script type="text/javascript">
 var foot = [50,0,100,0];
@@ -111,6 +199,20 @@ $(document).ready(function(){
 			move(obj.get(0),$(this).find(".mask").get(0));
 		}
 	});
+});
+	$('.js-nav__link').click(function(e) {
+    e.preventDefault();
+    var goTo = this.getAttribute("href");
+    $('.nav__item').addClass('nav__item--animate');
+    $('.nav__trigger').addClass('nav__trigger--active');
+    window.setTimeout(function() {
+        window.location = goTo;
+    }, 1000);
+});
+
+$('.nav__trigger').click(function() {
+    $('.nav__item').removeClass('nav__item--animate');
+    $(this).removeClass('nav__trigger--active');
 });
 </script>
 <style>
@@ -228,71 +330,24 @@ th {
 </head>
 <body>
 	
-	
-	
-	<div class="item">
-		<div id="star" class="object"></div>
-		<div id="starmask" class="mask"></div>
-		<a href="http://a4433917.gicp.net/plugin.php?id=xcblog&uid=1#/">附小文章</a>
-	</div>
-	<div class="item">
-		<div id="view" class="object"></div>
-		<div id="viewmask" class="mask"></div>
-		<a href="/xp.htm" style="color:#999">联通酷爱</a>
-	<div class="item">
-		<div id="Ljy" class="object"></div>
-		<div id="Ljymask" class="mask"></div>
-		<a href="http://thenmo.github.io">坐着！李金阳</a>
-	<div class="item">
-		<div id="test" class="object"></div>
-		<div id="testmask" class="mask"></div>
-		<a href="/test.html">及格世界</a>
-	</div>
-	<div class="item">
-		<div id="taobao" class="object"></div>
-		<div id="taobaomask" class="mask"></div>
-		<a href="/taobao.htm">淘宝充电宝</a>
-	<div class="item">
-		<div id="child" class="object"></div>
-		<div id="childmask" class="mask"></div>
-		<a href="/child.html">惠安大杯</a>
-	</div><div class="item">
-		<div id="demo" class="object"></div>
-		<div id="demomask" class="mask"></div>
-		<a href="/demo.html">主题乐园</a>
-	</div><div class="item">
-		<div id="deployment" class="object"></div>
-		<div id="deploymentmask" class="mask"></div>
-		<a href="/deployment.xml">游民计划</a>
-	</div><div class="item">
-		<div id="hell" class="object"></div>
-		<div id="hellmask" class="mask"></div>
-		<a href="/Hellow.html">宠物乐园</a>
-	</div><div class="item">
-		<div id="parent" class="object"></div>
-		<div id="parentmask" class="mask"></div>
-		<a href="/login.html" style="color:yellow">我的登录</a>
-	</div>
-	<div class="item">
-		<div id="girl" class="object"></div>
-		<div id="girlmask" class="mask"></div>
-		<a href="/gr.html">微博打歌</a>
-	</div>
-	<div class="item">
-		<div id="boy" class="object"></div>
-		<div id="boymask" class="mask"></div>
-		<a href="/sua.html">记&amp;录</a>
-	</div>
-	<div class="item">
-		<div id="kid" class="object"></div>
-		<div id="kidmask" class="mask"></div>
-		<a href="/sou.htm">学而不思</a>
-	</div>
-	<div class="item">
-		<div id="game" class="object"></div>
-		<div id="gamemask" class="mask"></div>
-		<a href="/game1.htm">积分项目</a>
-	</div><div class="container-fluid"><div class="row"><div class="col-md-9"><table class="table table-bordered table-hover">
+	<nav class='nav'>
+    <span class='nav__trigger'>MENU</span>
+    <ul class='nav__list'>
+	    
+        <li class='nav__item'>
+            <a href='#1' class='nav__link js-nav__link'>首页</a>
+        </li>
+        <li class='nav__item'>
+            <a href='#2' class='nav__link js-nav__link'>收藏夹</a>
+        </li>
+        <li class='nav__item'>
+            <a href='#3' class='nav__link js-nav__link'>订单</a>
+        </li>
+        <li class='nav__item'>
+            <a href='#4' class='nav__link js-nav__link'>关于</a>
+        </li>
+    </ul>
+</nav><div class="container-fluid"><div class="row"><div class="col-md-9"><table class="table table-bordered table-hover">
 <thead><tr><th>常数名称</th><th>十六进制值</th><th>十进制值</th><th>对应按键</th></tr></thead>
 <tbody><tr><td>VK_LBUTTON</td><td>01</td><td>1</td><td>鼠标的左键</td></tr>
 <tr><td>VK_RBUTTON</td><td>02</td><td>2</td><td>鼠标的右键</td></tr>
@@ -415,7 +470,71 @@ th {
     <!-- 使用 aotuload.js 引入看板娘 -->
     <script src="autoload.js?v=1.4.2"></script>
     </div>
+	
+	<div class="item">
+		<div id="star" class="object"></div>
+		<div id="starmask" class="mask"></div>
+		<a href="http://a4433917.gicp.net/plugin.php?id=xcblog&uid=1#/">附小文章</a>
+	</div>
+	<div class="item">
+		<div id="view" class="object"></div>
+		<div id="viewmask" class="mask"></div>
+		<a href="/xp.htm" style="color:#999">联通酷爱</a>
+	<div class="item">
+		<div id="Ljy" class="object"></div>
+		<div id="Ljymask" class="mask"></div>
+		<a href="http://thenmo.github.io">坐着！李金阳</a>
+	<div class="item">
+		<div id="test" class="object"></div>
+		<div id="testmask" class="mask"></div>
+		<a href="/test.html">及格世界</a>
+	</div>
+	<div class="item">
+		<div id="taobao" class="object"></div>
+		<div id="taobaomask" class="mask"></div>
+		<a href="/taobao.htm">淘宝充电宝</a>
+	<div class="item">
+		<div id="child" class="object"></div>
+		<div id="childmask" class="mask"></div>
+		<a href="/child.html">惠安大杯</a>
+	</div><div class="item">
+		<div id="demo" class="object"></div>
+		<div id="demomask" class="mask"></div>
+		<a href="/demo.html">主题乐园</a>
+	</div><div class="item">
+		<div id="deployment" class="object"></div>
+		<div id="deploymentmask" class="mask"></div>
+		<a href="/deployment.xml">游民计划</a>
+	</div><div class="item">
+		<div id="hell" class="object"></div>
+		<div id="hellmask" class="mask"></div>
+		<a href="/Hellow.html">宠物乐园</a>
+	</div><div class="item">
+		<div id="parent" class="object"></div>
+		<div id="parentmask" class="mask"></div>
+		<a href="/login.html" style="color:yellow">我的登录</a>
+	</div>
+	<div class="item">
+		<div id="girl" class="object"></div>
+		<div id="girlmask" class="mask"></div>
+		<a href="/gr.html">微博打歌</a>
+	</div>
+	<div class="item">
+		<div id="boy" class="object"></div>
+		<div id="boymask" class="mask"></div>
+		<a href="/sua.html">记&amp;录</a>
+	</div>
+	<div class="item">
+		<div id="kid" class="object"></div>
+		<div id="kidmask" class="mask"></div>
+		<a href="/sou.htm">学而不思</a>
+	</div>
+	<div class="item">
+		<div id="game" class="object"></div>
+		<div id="gamemask" class="mask"></div>
+		<a href="/game1.htm">积分项目</a>
+	</div><h3>
         转载自：<a href="#http://tools.jb51.net/table">脚本之家</a><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>进行许可。
-<a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=pcnMz8zL3MTLwuXfwNGLysvA3cjEzMmLxsrI" style="text-decoration:none;">给我写信</a>
+		</h3><a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=pcnMz8zL3MTLwuXfwNGLysvA3cjEzMmLxsrI" style="text-decoration:none;">给我写信</a>
 </body>
 </html>

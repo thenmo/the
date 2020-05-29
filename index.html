@@ -329,26 +329,7 @@ th {
 }
 </style>
 </head>
-<body>倒计时开始......
-<span id="s1">888</span>
-<script>                      <!--脚本定义开始 -->
-  
-var i=10;
- 
-function show()               <!--定义一个show函数 -->
-{
-  if(i>0 || i==0)
-  {
-  s1.innerHTML = i--;         <!--innerHTML的作用是往上面的span元素原有位置再覆盖一段html代码或文本或内容，这里写入的是i的值 -->
-  setTimeout("show()",1000);  <!--通过setTimeout函数延时1000毫秒的方式再次调用本函数，实现延时效果 -->
-  }
-  else
-  alert("欢迎光临"+document.location.href)
-}
- 
-show();                       <!--调用show函数 -->
- 
-</script>                     <!--脚本结束 -->
+<body>
    <nav class='nav'>
     <span class='nav__trigger'>MENU</span>
     <ul class='nav__list'>

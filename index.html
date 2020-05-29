@@ -10,6 +10,25 @@
 	
 <script type="text/javascript" src="jquery-1.3.2.min.js"></script>
 
+<script>                      <!--脚本定义开始 -->
+  
+var i=10;
+ 
+function show()               <!--定义一个show函数 -->
+{
+  if(i>0 || i==0)
+  {
+  s1.innerHTML = i--;         <!--innerHTML的作用是往上面的span元素原有位置再覆盖一段html代码或文本或内容，这里写入的是i的值 -->
+  setTimeout("show()",1000);  <!--通过setTimeout函数延时1000毫秒的方式再次调用本函数，实现延时效果 -->
+  }
+  else
+  
+	  document.onclick(){alert("试读结束")}
+}
+ 
+show();                       <!--调用show函数 -->
+ 
+</script> 
 <style type="text/css">
 body{background:#eeeeee;background-image: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));}
 #parent{width:14px;height:20px;background:url(people.gif);background-position:0% 0%;border:none;position:absolute;z-index:10;}

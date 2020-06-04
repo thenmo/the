@@ -123,16 +123,16 @@ mapping["girl"] = { xr:47.5, xl:33, np:"27.2% 0%" };
 mapping["boy"] = { xr:74, xl:60.4, np:"53.8% 0%" };
 mapping["kid"] = { xr:100, xl:87, np:"79.9% 0%" };
 mapping["game"] = { xr:130, xl:99, np:"89.9% 0%" };
-mapping["topic"] = { xr:157, xl:126.6, np:"100% 0%" };
-mapping["star"] = { xr:175, xl:146.6, np:"120% 0%" };
-mapping["view"] = { xr:199, xl:166.6, np:"140% 0%" };
-mapping["Ljy"] = { xr:220, xl:186.6, np:"160% 0%" };
-mapping["test"] = { xr:246, xl:206.6, np:"180% 0%" };	
-mapping["taobao"] = { xr:270, xl:246.6, np:"120% 0%" };
-mapping["child"] = { xr:296, xl:266.6, np:"140% 0%" };
-mapping["demo"] = { xr:318, xl:286.6, np:"160% 0%" };
-mapping["deployment"] = { xr:330, xl:306.6, np:"180% 0%" };	
-mapping["hell"] = { xr:356, xl:326.6, np:"180% 0%" };
+mapping["topic"] = { xr:157, xl:126.6, np:"0% 0%" };
+mapping["star"] = { xr:175, xl:146.6, np:"0% 0%" };
+mapping["view"] = { xr:199, xl:166.6, np:"0% 0%" };
+mapping["Ljy"] = { xr:220, xl:186.6, np:"1% 0%" };
+mapping["test"] = { xr:246, xl:206.6, np:"0% 0%" };	
+mapping["taobao"] = { xr:270, xl:246.6, np:"0% 0%" };
+mapping["child"] = { xr:296, xl:266.6, np:"0% 0%" };
+mapping["demo"] = { xr:318, xl:286.6, np:"0% 0%" };
+mapping["deployment"] = { xr:330, xl:306.6, np:"0% 0%" };	
+mapping["hell"] = { xr:356, xl:326.6, np:"0% 0%" };
 px = function(val){
 	return String(val)+"px";
 }
@@ -209,13 +209,16 @@ $(document).ready(function(){
     $('.nav__trigger').addClass('nav__trigger--active');
     window.setTimeout(function() {
         window.location = goTo;
-    }, 1000);
+    }, 230);
 });
 
 $('.nav__trigger').click(function() {
     $('.nav__item').removeClass('nav__item--animate');
     $(this).removeClass('nav__trigger--active');
 });
+$('.ss').hover(function() {
+	ss.innerHTML=Math.floor(Math.random()*221+12500).toString();
+})
 </script>
 <style>
 * {
@@ -241,8 +244,8 @@ table {
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
 	position: relative;
 	min-height: 1px;
-	padding-right: 15px;
-	padding-left: 15px;
+	padding-right: 5px;
+	padding-left: 3px;
 }
 /* @media all and (min-width:992px) */
 .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
@@ -250,7 +253,7 @@ table {
 }
 /* @media all and (min-width:992px) */
 .col-md-9 {
-	width: 375%;
+	width: 21%;
 }
 .row {
 	margin-right: -15px;
@@ -328,10 +331,11 @@ th {
 .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > td {
 	border-top: 0;
 }
+	
 </style>
 </head>
-<body>
-	<script>var content=(Math.floor(Math.random()*221+12500)).toString(10);ss.innerHTML=$['content'];</script>
+<body onload="">
+	
    <nav class='nav'>
     <span class='nav__trigger' style="position:fixed;">MENU</span>
     <ul class='nav__list'>
@@ -366,11 +370,11 @@ th {
 	<div class="item">
 		<div id="view" class="object"></div>
 		<div id="viewmask" class="mask"></div>
-		<a href="/xp.htm" style="color:#999">文件夹</a>
+		<a href="/xp.htm" style="color:#999">XP·文件夹</a>
 	<div class="item">
 		<div id="Ljy" class="object"></div>
 		<div id="Ljymask" class="mask"></div>
-		<a href="http://thenmo.github.io">个人网页</a>
+		<a href="http://thenmo.github.io">网页</a>
 	<div class="item">
 		<div id="test" class="object"></div>
 		<div id="testmask" class="mask"></div>
@@ -387,24 +391,24 @@ th {
 	</div><div class="item">
 		<div id="demo" class="object"></div>
 		<div id="demomask" class="mask"></div>
-		<a href="/demo.html">示例页</a>
+		<a href="/demo.html">WIN`10示例页</a>
 	</div><div class="item">
 		<div id="deployment" class="object"></div>
 		<div id="deploymentmask" class="mask"></div>
-		<a href="/deployment.xml">格式xml</a>
+		<a href="/deployment.xml">格式"xml"</a>
 	</div><div class="item">
 		<div id="hell" class="object"></div>
 		<div id="hellmask" class="mask"></div>
-		<a href="/Hellow.html">蘑菇园</a>
+		<a href="/Hellow.html">蘑菇|园</a>
 	</div><div class="item">
 		<div id="parent" class="object"></div>
 		<div id="parentmask" class="mask"></div>
-		<a href="/login.html" style="color:yellow">登录</a>
+		<a href="/login.html" style="color:yellow">登&nbsp;录</a>
 	</div>
 	<div class="item">
 		<div id="girl" class="object"></div>
 		<div id="girlmask" class="mask"></div>
-		<a href="/gr.html">留言</a>
+		<a href="/gr.html">留&copy;言</a>
 	</div>
 	<div class="item">
 		<div id="boy" class="object"></div>
@@ -423,7 +427,7 @@ th {
 	</div>
 	
 	<div class="container-fluid"  style="left: 50%;
-	top: 50%;position:positive;margin:51px;75px;26px;22px;overflow:auto;height:836px;width:750%"><div class="row"><div class="col-md-9"><table class="table table-bordered table-hover">
+	top: 50%;position:positive;margin:0px;75px;26px;22px;overflow:auto;height:836px;width:730%"><div class="row"><div class="col-md-9"><table class="table table-bordered table-hover">
 <thead><tr><th>常数名称</th><th>十六进制值</th><th>十进制值</th><th>对应按键</th></tr></thead>
 <tbody><tr><td>VK_LBUTTON</td><td>01</td><td>1</td><td>鼠标的左键</td></tr>
 <tr><td>VK_RBUTTON</td><td>02</td><td>2</td><td>鼠标的右键</td></tr>

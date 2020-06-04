@@ -119,10 +119,10 @@ var step = 12;
 var sleeptime = 70;
 var mapping = Array();
 mapping["parent"] = { xr:20, xl:6.6, np:"0% 0%" };
-mapping["girl"] = { xr:47.5, xl:33, np:"27.2% 0%" };
-mapping["boy"] = { xr:74, xl:60.4, np:"53.8% 0%" };
-mapping["kid"] = { xr:100, xl:87, np:"79.9% 0%" };
-mapping["game"] = { xr:130, xl:99, np:"89.9% 0%" };
+mapping["girl"] = { xr:47.5, xl:33, np:"0% 0%" };
+mapping["boy"] = { xr:74, xl:60.4, np:"0.8% 0%" };
+mapping["kid"] = { xr:100, xl:87, np:"0.9% 0%" };
+mapping["game"] = { xr:130, xl:99, np:"0.9% 0%" };
 mapping["topic"] = { xr:157, xl:126.6, np:"0% 0%" };
 mapping["star"] = { xr:175, xl:146.6, np:"0% 0%" };
 mapping["view"] = { xr:199, xl:166.6, np:"0% 0%" };
@@ -216,8 +216,8 @@ $('.nav__trigger').click(function() {
     $('.nav__item').removeClass('nav__item--animate');
     $(this).removeClass('nav__trigger--active');
 });
-$('.ss').hover(function sd() {
-	ss.innerHTML=Math.floor(Math.random()*221+12500).toString();
+function sd() {
+	document.getElementById('ss').innerHTML=Math.floor(Math.random()*221+12500).toString();
 };
 </script>
 <style>
@@ -358,11 +358,11 @@ th {
 	<div class="box" id="a2"><h2>设置</h2><p>知否知否</p></div><div class="box" id="a3"><h2>设置</h2>
 	<embed type="text/html" src="snippet.html" width="500" height="200"></div>
 	<div class="box" id="a4"><h2>设置</h2><p>斗破苍穹</p></div><div class="box" id="a5"><h2>设置</h2><p>斗罗大陆</p><p>1123</p>
-	<p><img src="1.png"></p><p>7724</p><p>3306</p><p>2748</p><p>3125</p><p>7429</p><p>2725</p><p>2321</p> 
+	<p><img src="1.png"></p><p>2748</p><p>3125</p><p>3306</p><p>7724</p><p>7429</p><p>2725</p><p>2321</p> 
  </div></div>
 	<div class="pager"><a title="休闲" href="#a1">1</a> <a title="娱乐" href="#a2">2</a> <a title="经济" href="#a3">3</a>
 		<a title="竞技" href="#a4">4</a> <a title="友谊" href="#a5">5</a></div><div></div>
-	有求必应<div class="item" >
+	<b>有求必应</b><div class="item" >
 		<div id="star" class="object"></div>
 		<div id="starmask" class="mask"></div>
 		<a href="http://a4433917.gicp.net/plugin.php?id=xcblog&uid=1#/">（痛快话）</a>
@@ -378,7 +378,7 @@ th {
 	<div class="item">
 		<div id="test" class="object"></div>
 		<div id="testmask" class="mask"></div>
-		<a href="/test.html">测试页面</a>
+		<a href="/test.html">测试/页面</a>
 	</div>
 	<div class="item">
 		<div id="s1" class="object"></div>
@@ -387,7 +387,7 @@ th {
 	<div class="item">
 		<div id="child" class="object"></div>
 		<div id="childmask" class="mask"></div>
-		<a href="/topic.htm">爱国核心价值观（缺坏）</a>
+		<a href="/topic.htm">核心价值观</a>
 	</div><div class="item">
 		<div id="demo" class="object"></div>
 		<div id="demomask" class="mask"></div>

@@ -112,7 +112,19 @@ body {
     color: #876543;
 }
 .wrapper {    width:200px;    height:200px;    position:absolute;    top:50%;    left:50%;    margin:-100px 0 0 -100px;    border:1px solid #333333;    background:#CCCCCC;}.content {    width:180px;    height:160px;    margin:10px auto 0;    overflow:hidden;    border:1px solid #999999;    background:#FFFFFF;}.box {    float:left;    width:160px;    height:150px;    margin-bottom:10px;    padding:10px;    overflow:auto;}.pager {    width:180px;    height:20px;    margin:5px auto;    text-align:right;}.pager a {    padding:2px 4px;    text-decoration:none;    background:#FF0000;    color:#FFFFFF;}.pager a:hover {    background:#FFFFFF;    outline:#FF0000 1px solid;    color:#000000;}
-</style>
+</style><script language="javascript">
+function randomString(len) {
+　　len = len || 32;
+　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+　　var maxPos = $chars.length;
+　　var pwd = '';
+　　for (i = 0; i < len; i++) {
+　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+　　}
+　　return pwd;
+}
+document.write(randomString(32));
+</script>
 <script type="text/javascript">
 var foot = [50,0,100,0];
 var step = 12;
@@ -331,7 +343,7 @@ th {
 	
 </style>
 </head>
-<body onload="$['ss'].innerHTML=Math.floor(Math.random()*221+12500).toString()">
+<body>
 	
    <nav class='nav'>
     <span class='nav__trigger' style="position:fixed;">MENU</span>
@@ -350,7 +362,7 @@ th {
             <a href='https://pan.baidu.com/' class='nav__link js-nav__link'>百度盘</a>
         </li>
     </ul>
-	</nav><center>小说推荐</center><span id="ss">888</span><div class="content"><div class="box" id="a1"><h2>设置</h2><p>凡人修仙传</p>
+	</nav><center>小说推荐</center><span id="ss">888</span><div class="content" width=75%><div class="box" id="a1"><h2>设置</h2><p>凡人修仙传</p>
 	<p>韩跑跑的日常</p></div>
 	<div class="box" id="a2"><h2>设置</h2><p>知否知否</p></div><div class="box" id="a3"><h2>设置</h2>
 	<embed type="text/html" src="snippet.html" width="500" height="200"></div>

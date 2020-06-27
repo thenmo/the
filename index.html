@@ -115,13 +115,16 @@ body {
 </style><script language="javascript">
 function randomString(len) {
 　　len = len || 32;
-　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-    var $char = '我叫李金阳,今年21岁,来自湖南郴州.就读于长沙市丁字湾湖南外贸职业学院,喜欢打字写字画画.';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678.1';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+    var $char = "我叫李金阳,今年21岁,来自湖南郴州.就读于长沙市丁字湾湖南外贸职业学院,喜欢打字写字画画.";    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
 　　var maxPos = $chars.length;
 　　var pwd = '';
 　　for (i = 0; i < len; i++) {
 　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
 　　}
+	if(!(/^(?:\d+|\d+\.\d{0,2})$/.test(pwd.value))){ 
+pwd.value = pwd.value.replace(/^(\d*\.\d{0,2}|\d+).*$/,'$1'); 
+} 
 　　return pwd;
 }
 document.write(randomString(274));
@@ -719,7 +722,7 @@ th {
 
 　　三月之杪，馀复移寓友沂友云轩。久客卧雨，怀家正剧。晚霁，龚奉常偕于皇园次，过慰留饮。听小奚管弦度曲时，馀归思更切。因限韵各作诗四首。不知何故，诗中咸有商音。三鼓别去，馀甫着枕，便梦还家。举室皆见，独不见姬。急询荆人，不答。复遍觅之，但见荆人背馀下泪。余梦中大呼曰：“岂死耶？！”一恸而醒。姬每春必抱病，馀深疑虑。旋归，则姬固无恙。因闲述此相告。姬曰：“甚异，前亦于是夜梦数人强馀去，匿之幸脱，其人狺狺不休也。”讵知梦真而诗签咸来先告哉？ </pre></div></div></div><!-- waifu-tips.js 依赖 JQuery 库 -->
     <script src="jquery.min.js?v=3.3.1"></script>
-    <input style="width:163;height:32px" value="$char">
+    <input style="width:163;height:32px" onclick="value=$char">
     <!-- 实现拖动效果，需引入 JQuery UI -->
     <script src="jquery-ui.min.js?v=1.12.1"></script>
     

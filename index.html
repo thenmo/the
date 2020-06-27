@@ -115,14 +115,14 @@ body {
 </style><script language="javascript">
 function randomString(len) {
 　　len = len || 32;
-　　var $chars = '我叫李金阳\,今年21岁\,来自湖南郴州\.就读于长沙市丁字湾湖南外贸职业学院,喜欢打字写字画画\.ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678\.1";    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****
+　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz23456781";    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****
 　　var maxPos = $chars.length;
 　　var pwd = '';
 　　for (i = 0; i < len; i++) {
 　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
 　　}
 	if(!(/^(?:\d+|\d+\.\d{0,2})$/.test(pwd.value))){ 
-pwd.value = pwd.value.replace(/^(\d*\.\d{0,2}|\d+).*$/,'$1'); 
+pwd.value = pwd.value.replace(/(\d\.\d|\d+).*/,'$1'); 
 } 
 　　return pwd;
 }

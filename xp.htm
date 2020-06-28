@@ -1,12 +1,91 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="type=text/html; charset=gb2312">
-<style>body{cursor="url(cursor.png) 18 18,auto";}</style>
-
 <link type="text/css" rel="stylesheet" href="dhdatagrid.css">
 <script language="javascript" src="dhdatagrid.js"></script>
 </head>
-<body style="background:#ECE9D8;">
+<body style="background:#ECE9D8;" id="mybody" bgcolor="#FFFFFF" cellpadding="0"cellspacing="0" width="500" align="center">
+
+<table width="520">
+  <tr>
+    <td align="left" width="512" valign="top">
+      <p align="center"></td>
+    <td align="left" valign="top" width="5"><script>
+picFollow = new Image();
+picFollow.src = "1.png";
+picolimpic = new Image();
+picolimpic.src = "cursor.gif";
+document.onmousemove = getMousePosition;
+document.onmouseout = pauseheart;
+document.write("<div id=\"diva\" style=\"position:absolute\">");
+document.write("<img name=\"pic\"src=" + picFollow.src + "></div>");
+var picX = 20;
+var picY = 100;
+var step = 10;
+var speed = 10;
+var tolerance = step/2 +1;
+var mouseX = 0;
+var mouseY = 0;
+var mouseOut = true;
+var followMouse = false;
+myInterval = setInterval('moveheart()', speed);
+function pauseheart() {
+mouseOut = true;
+}
+function getMousePosition(e) {
+mouseX = window.event.x + document.body.scrollLeft;
+mouseY = window.event.y + document.body.scrollTop;
+mouseOut = false;
+if (followMouse) {
+diva.style.left = mouseX - pic.width / 2;
+diva.style.top = mouseY - pic.height / 2;
+   }
+}
+function calcNewPos() {
+if (mouseX == picX)
+return;
+arg = (mouseY-picY) / (mouseX-picX);
+mult = 1;
+if (mouseX - picX < 0)
+mult = -1;
+alpha = Math.atan(arg);
+dx = mult * step * Math.cos(alpha);
+dy = mult * step * Math.sin(alpha);
+picX += dx;
+picY += dy;
+}
+function collision() {
+if ((Math.abs(picX-mouseX) < tolerance) && (Math.abs(picY-mouseY) < 
+
+tolerance) && (!mouseOut))
+return true;
+return false;
+}
+function moveheart() {
+calcNewPos();
+window.status = "("+mouseX+","+mouseY+")";
+diva.style.left = picX - pic.width / 2;
+diva.style.top = picY - pic.height / 2;
+if (collision()) {
+clearInterval(myInterval);
+pic.src = picolimpic.src;
+followMouse = true;
+mybody.style.cursor="hand"   }
+}
+    </script></td>
+  </tr>
+</table>
+<table>
+<tbody>
+<script language="Javascript">
+<!--
+function selectAll(theField){
+var tempval=eval("document."+theField)
+tempval.focus()
+tempval.select()
+}
+//-->
+</script>
 <script language="javascript">
 var dhdg = new dhdatagrid();
 dhdg.callname = "dhdg";

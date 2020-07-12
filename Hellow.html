@@ -30,7 +30,7 @@
 					
 				// animate label on circular path
 				if((angle += 0.002) >= 360) angle = 0;
-				label.css("left",  (Math.cos(127.5/Math.PI * angle)*7 + startLeft) + "px"); 
+				label.css("left",  (Math.cos(157.5/Math.PI * angle)*7 + startLeft) + "px"); 
 				label.css("top", (Math.sin(360/Math.PI * angle)*7 + startTop) + "px");
 				label.data("angle", angle);
 				
@@ -98,8 +98,8 @@
 		});
 		
 		$("body").mousemove(function(event) {
-			mousePos.x = event.pageX;
-			mousePos.y = event.pageY;
+			mousePos.x = event.pageX-6*3.14*mousePos.y;
+			mousePos.y = event.pageY+2*mousePos.x;
 		});
 		
 		// start animation
@@ -121,6 +121,7 @@
 		height:100%;
 		background-image:url('bg.gif');
 		background-repeat:repeat;
+		filter: brightness(0.5); 
 	}
 	a {
 		color: #fff; 
@@ -191,7 +192,7 @@
 				<div class="label" style="left:15px; top:-80px;">Mi Mi?</div>
 			</div>
 			<div id="bear" class="animal" style="left:400px; top:360px;">
-				<img src="hellow-kitty.png" />
+				<img src="hello-kitty.png" style="filter: contrast(3);"/>
 				<div class="label" style="left:15px; top:-80px;">Hell~</div>
 			</div>
 		</div>
@@ -200,7 +201,7 @@
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div style="text-align:center;clear:both">
-<p>适用：李扬FireFox、周芷羽Chrome、黄菲然傲游、大哥哥搜狗. 周妈不支持IE8、周爸360、爱宝Opera、苹果Safari、外婆世界之窗。</p>
+<p>适用：FireFox、Chrome、傲游、搜狗. 不支持IE8、360、Opera、Safari、世界之窗。</p>
 <p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
 </div>
 </body>

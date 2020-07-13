@@ -24,11 +24,11 @@ h3 {
 .main {
 	width: 300px;
 	height: 500px;
-	background: url(../img/kegou.jpg)no-repeat center 10px;
+	background: url(../kegou.jpg)no-repeat center 10px;
 	border-radius: 5px;
 	margin: 50px auto;
 	padding: 10px;
-	color: #fff;
+	color: #ffaa;
 }
 
 .top {
@@ -46,7 +46,7 @@ h3 {
 	border-radius: 5px;
 	margin-left: 8px;
 	font-size: 12px;
-	border: 1px solid #fff;
+	border: 1px solid #ffaf;
 	position: relative;
 }
 .top span.active{
